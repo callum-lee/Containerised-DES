@@ -16,19 +16,19 @@
 	</natures>
 	<linkedResources>
 		<link>
+			<name>java</name>
+			<type>2</type>
+			<location>/Users/callum/Library/CloudStorage/OneDrive-Personal/Documents/Containerised-DES/Containerised-DES/jaamsim/src/test/java</location>
+		</link>
+		<link>
 			<name>main</name>
 			<type>2</type>
-			<location>C:/Users/mosu001/OneDrive - The University of Auckland/Documents/uoa/EngSci/4th Year Projects/2022/Containerised-DES/jaamsim/src/main/java</location>
+			<location>/Users/callum/Library/CloudStorage/OneDrive-Personal/Documents/Containerised-DES/Containerised-DES/jaamsim/src/main/java</location>
 		</link>
 		<link>
 			<name>resources</name>
 			<type>2</type>
-			<location>C:/Users/mosu001/OneDrive - The University of Auckland/Documents/uoa/EngSci/4th Year Projects/2022/Containerised-DES/jaamsim/src/main/resources</location>
-		</link>
-		<link>
-			<name>test</name>
-			<type>2</type>
-			<location>C:/Users/mosu001/OneDrive - The University of Auckland/Documents/uoa/EngSci/4th Year Projects/2022/Containerised-DES/jaamsim/src/test/java</location>
+			<location>/Users/callum/Library/CloudStorage/OneDrive-Personal/Documents/Containerised-DES/Containerised-DES/jaamsim/src/main/resources</location>
 		</link>
 	</linkedResources>
 </projectDescription>
