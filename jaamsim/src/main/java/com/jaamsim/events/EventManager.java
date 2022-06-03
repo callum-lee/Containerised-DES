@@ -978,3 +978,5 @@ public final class EventManager {
 		return !disableSchedule;
 	}
 }
+
+// make some changes
