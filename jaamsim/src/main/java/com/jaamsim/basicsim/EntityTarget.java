@@ -31,4 +31,9 @@ public abstract class EntityTarget<T extends Entity> extends ProcessTarget {
 	public String getDescription() {
 		return ent.getName() + "." + desc;
 	}
+
+	// CDES change: Enable the entity to be seen
+	public T getEntity() {
+		return ent;
+	}
 }

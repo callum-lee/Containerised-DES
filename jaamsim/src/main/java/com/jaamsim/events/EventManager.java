@@ -21,6 +21,9 @@ import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicLong;
 
+// CDES change: Need EntityTarget info
+import com.jaamsim.basicsim.EntityTarget;
+
 /**
  * The EventManager is responsible for scheduling future events, controlling
  * conditional event evaluation, and advancing the simulation time. Events are
@@ -774,7 +777,7 @@ public final class EventManager {
 	 * @param fifo break ties with previously scheduled events using FIFO/LIFO ordering
 	 * @param t the process target to run when the event is executed
 	 * @param handle an optional handle to hold onto the scheduled event
-	 * @throws ProcessError if called outside of a Process context
+	 * @throws ProcessEr ror if called outside of a Process context
 	 */
 	public static final void scheduleTicks(long waitLength, int eventPriority, boolean fifo, ProcessTarget t, EventHandle handle) {
 		Process cur = Process.current();
@@ -800,6 +803,10 @@ public final class EventManager {
 
 	private void scheduleTicks(Process cur, long waitLength, int eventPriority, boolean fifo, ProcessTarget t, EventHandle handle) {
 		assertCanSchedule();
+		// CDES change: check the type of target
+		String tStr = t.getClass().toString();
+		if (!tStr.equals("class com.jaamsim.basicsim.StartUpTarget"))
+			System.out.println(tStr);
 		long schedTick = calculateEventTime(waitLength);
 		EventNode node = getEventNode(schedTick, eventPriority);
 		Event evt = getEvent();
