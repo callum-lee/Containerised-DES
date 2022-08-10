@@ -17,6 +17,7 @@
  */
 package com.jaamsim.events;
 
+import java.io.Console;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicLong;
@@ -799,6 +800,14 @@ public final class EventManager {
 		Process cur = Process.current();
 		long ticks = cur.evt().secondsToNearestTick(secs);
 		cur.evt().scheduleTicks(cur, ticks, eventPriority, fifo, t, handle);
+		System.out.println(cur);
+		System.out.println(ticks);
+		System.out.println(eventPriority);
+		System.out.println(fifo);
+		System.out.println(t);
+		System.out.println(handle);
+		
+
 	}
 
 	private void scheduleTicks(Process cur, long waitLength, int eventPriority, boolean fifo, ProcessTarget t, EventHandle handle) {
@@ -807,6 +816,7 @@ public final class EventManager {
 		String tStr = t.getClass().toString();
 		if (!tStr.equals("class com.jaamsim.basicsim.StartUpTarget"))
 			System.out.println(tStr);
+
 		long schedTick = calculateEventTime(waitLength);
 		EventNode node = getEventNode(schedTick, eventPriority);
 		Event evt = getEvent();
