@@ -162,7 +162,7 @@ public final class EventManager {
 
 	private boolean executeTarget(Process cur, ProcessTarget t) {
 		long curTicks = EventManager.simTicks();
-		if (t.getDescription().endsWith(".startUp")) {
+		if (!t.getDescription().endsWith(".startUp")) {
 			System.out.println("Executing " + t.getDescription() +
 					           " at " + curTicks);
 		}
@@ -805,22 +805,23 @@ public final class EventManager {
 		Process cur = Process.current();
 		long ticks = cur.evt().secondsToNearestTick(secs);
 		cur.evt().scheduleTicks(cur, ticks, eventPriority, fifo, t, handle);
+		/*
 		System.out.println(cur);
 		System.out.println(ticks);
 		System.out.println(eventPriority);
 		System.out.println(fifo);
 		System.out.println(t);
 		System.out.println(handle);
-		
+		*/
 
 	}
 
 	private void scheduleTicks(Process cur, long waitLength, int eventPriority, boolean fifo, ProcessTarget t, EventHandle handle) {
 		assertCanSchedule();
 		// CDES change: check the type of target
-		String tStr = t.getClass().toString();
-		if (!tStr.equals("class com.jaamsim.basicsim.StartUpTarget"))
-			System.out.println(tStr);
+		//String tStr = t.getClass().toString();
+		//if (!tStr.equals("class com.jaamsim.basicsim.StartUpTarget"))
+		//	System.out.println(tStr);
 
 		long schedTick = calculateEventTime(waitLength);
 		EventNode node = getEventNode(schedTick, eventPriority);
@@ -839,19 +840,19 @@ public final class EventManager {
 			enableSchedule();
 		}
 		node.addEvent(evt, fifo);
-		if (!tStr.equals("class com.jaamsim.basicsim.StartUpTarget")) {			
-			if (t.getDescription().equals("Simulation.endRun")) {
-				System.out.println(t.getDescription() + " AT " + schedTick);
-			} else if (t.getDescription().endsWith(".endStep")) {
-				System.out.println(t.getDescription() + "\n" +
-		                   schedTick + "\n" +
-				           evt);
-			} else {
-				System.out.println(t.getDescription() + "\n" +
-		                   schedTick + "\n" +
-				           evt);
-			}
-		}
+//		if (!tStr.equals("class com.jaamsim.basicsim.StartUpTarget")) {			
+//			if (t.getDescription().equals("Simulation.endRun")) {
+//				System.out.println(t.getDescription() + " AT " + schedTick);
+//			} else if (t.getDescription().endsWith(".endStep")) {
+//				System.out.println(t.getDescription() + "\n" +
+//		                   schedTick + "\n" +
+//				           evt);
+//			} else {
+//				System.out.println(t.getDescription() + "\n" +
+//		                   schedTick + "\n" +
+//				           evt);
+//			}
+//		}
 	}
 
 	/**
