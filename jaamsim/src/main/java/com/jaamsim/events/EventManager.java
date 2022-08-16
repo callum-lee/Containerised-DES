@@ -161,6 +161,11 @@ public final class EventManager {
 	}
 
 	private boolean executeTarget(Process cur, ProcessTarget t) {
+		long curTicks = EventManager.simTicks();
+		if (t.getDescription().endsWith(".startUp")) {
+			System.out.println("Executing " + t.getDescription() +
+					           " at " + curTicks);
+		}
 		try {
 			// If the event has a captured process, pass control to it
 			Process p = t.getProcess();
@@ -834,6 +839,19 @@ public final class EventManager {
 			enableSchedule();
 		}
 		node.addEvent(evt, fifo);
+		if (!tStr.equals("class com.jaamsim.basicsim.StartUpTarget")) {			
+			if (t.getDescription().equals("Simulation.endRun")) {
+				System.out.println(t.getDescription() + " AT " + schedTick);
+			} else if (t.getDescription().endsWith(".endStep")) {
+				System.out.println(t.getDescription() + "\n" +
+		                   schedTick + "\n" +
+				           evt);
+			} else {
+				System.out.println(t.getDescription() + "\n" +
+		                   schedTick + "\n" +
+				           evt);
+			}
+		}
 	}
 
 	/**
