@@ -162,6 +162,8 @@ public final class EventManager {
 
 	private boolean executeTarget(Process cur, ProcessTarget t) {
 		long curTicks = EventManager.simTicks();
+		
+		// CDES Change: Output the event description and the tick time that it will be executed at
 		if (!t.getDescription().endsWith(".startUp")) {
 			System.out.println("Executing " + t.getDescription() +
 					           " at " + curTicks);
@@ -840,6 +842,8 @@ public final class EventManager {
 			enableSchedule();
 		}
 		node.addEvent(evt, fifo);
+		
+		// CDES change: output the simulation runtime, descriptions and events 
 //		if (!tStr.equals("class com.jaamsim.basicsim.StartUpTarget")) {			
 //			if (t.getDescription().equals("Simulation.endRun")) {
 //				System.out.println(t.getDescription() + " AT " + schedTick);
