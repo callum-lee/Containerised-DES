@@ -30,15 +30,15 @@ def query_example():
 # request data fromat 2: forms
 
 # request data format 3: json data
-@app.route('/json-example', methods = ['POST','GET'] )
+@app.route('/json-example', methods = ['GET', 'POST'] )
 def json_example(): # usually sent through some auto processes
     req_data = request.get_json()
     
-    language = req_data['language']
-    framework = req_data['framework']
-    python_version = req_data['version_info']['python']
-    examples = req_data['examples'][0]
-    boolean_test = req_data['boolean_test']
+    language = req_data["language"]
+    framework = req_data["framework"]
+    python_version = req_data["version_info"]["python"]
+    examples = req_data["examples"][0]
+    boolean_test = req_data["boolean_test"]
 
     return '''<h1>
     The language value is {}.
@@ -47,6 +47,12 @@ def json_example(): # usually sent through some auto processes
     The example at 0 index is {}
     The boolean value is {}
     </h1>'''.format(language, framework, python_version, examples, boolean_test)
+
+    # age = req_data["age"]
+
+    # return '''<h1>
+    # The age is {}
+    # </h1>'''.format(age)
 
 if __name__ == "__main__":
     app.run(debug = True, port = 5000)

@@ -13,6 +13,5 @@ data = {
     "boolean_test": True
 }
 
-jsonData = json.dumps(data)
+# jsonData = json.dumps(data)
 requests.post('http://127.0.0.1:5000/json-example', json = data)
-pass
