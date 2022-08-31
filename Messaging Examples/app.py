@@ -48,11 +48,24 @@ def json_example(): # usually sent through some auto processes
     The boolean value is {}
     </h1>'''.format(language, framework, python_version, examples, boolean_test)
 
-    # age = req_data["age"]
+# return which script sent a larger number
+@app.route('/compare-example', methods = ['GET', 'POST'] )
+def compare_example(): # usually sent through some auto processes
+    req_data = request.get_json()
+    
+    A_val = req_data["A"]
+    B_val = req_data["B"]
+    
+    if A_val > B_val:
+        larger_key = "A"
+    else:
+        larger_key = "B"
 
-    # return '''<h1>
-    # The age is {}
-    # </h1>'''.format(age)
+    return '''<h1>
+    Value of post A is {}.
+    Value of post B is {}.
+    Post {} sent a larger number.
+    </h1>'''.format(A_val, B_val, larger_key)
 
 if __name__ == "__main__":
     app.run(debug = True, port = 5000)
