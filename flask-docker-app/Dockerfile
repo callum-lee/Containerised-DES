@@ -10,6 +10,8 @@ RUN python3 -m venv /opt/venv
 
 COPY requirements.txt requirements.txt 
 
+# Expose the host ports
+EXPOSE 8000
 
 RUN . /opt/venv/bin/activate && pip3 install -r requirements.txt
 

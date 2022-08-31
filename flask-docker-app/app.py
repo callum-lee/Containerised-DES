@@ -10,9 +10,9 @@ from pip import main
 app = Flask(__name__)
 
 
-# @app.route("/")
-# def hello():
-#     return "Hello World!"
+@app.route("/")
+def hello():
+    return "Hello World!"
 
 # data = '494949499494'
 # r = requests.post("http://localhost:5000", data= data)
