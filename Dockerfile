@@ -2,7 +2,7 @@
 FROM nginx:1.10.1
 
 # Copy the source files to a destination
-COPY src/html /usr/share/nginx/html
+COPY src/html /Users/callum/GitHub/Containerised-DES
 
 # Expose the host ports
 # EXPOSE 80
