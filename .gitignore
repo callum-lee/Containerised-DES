@@ -8,3 +8,9 @@ combined_model.log
 combined_model.evt
 queue_1.log
 two_queue_two_gen_model.log
+chatapp/main.py
+chatapp/templates/session.html
+socketapp/msocks_client.py
+socketapp/msocks_server.py
+socketapp/socket_client.py
+socketapp/socket_server.py
