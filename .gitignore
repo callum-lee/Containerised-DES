@@ -14,3 +14,5 @@ socketapp/msocks_client.py
 socketapp/msocks_server.py
 socketapp/socket_client.py
 socketapp/socket_server.py
+socketapp/.project
+socketapp/.classpath
