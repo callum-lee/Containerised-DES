@@ -3,7 +3,7 @@ import socket
 def client_program():
     # get the hostname
     host = socket.gethostname()
-    port = 5000  # initiate port no above 1024
+    port = 8080  # initiate port no above 1024
 
     ClientMultiSocket = socket.socket()
     ClientMultiSocket.settimeout(100)
@@ -16,7 +16,7 @@ def client_program():
     res = ClientMultiSocket.recv(1024)
 
     while True:
-        Input = input('Hey there: ')
+        Input = "10" # Set an arbitrary input
         if Input == "Bye":
           break
         ClientMultiSocket.send(str.encode(Input))
