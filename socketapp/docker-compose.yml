@@ -1,0 +1,20 @@
+# Specify the version tag 
+version: "3"
+
+# Specify the services (each service is a seperate container)
+services:
+
+  # Build and run the server container on the 8080:8080 port connection
+  server:
+    build: server/
+    command: python ./sync_server.py
+    ports:
+      - 8080:8080
+
+  # Build and run the client container which can access the local host and depends on server container to run first
+  client:
+    build: client/
+    command: python ./sync_client.py
+    network_mode: host
+    depends_on:
+      - server 

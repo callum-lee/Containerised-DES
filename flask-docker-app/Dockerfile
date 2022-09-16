@@ -1,6 +1,8 @@
 # syntax=docker/dockerfile:1
 
 # Define the base image
+
+
 # FROM nginx:1.10.1
 FROM python:3.9.2
 

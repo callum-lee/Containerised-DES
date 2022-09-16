@@ -45,7 +45,7 @@ class SyncServer:
         # get the hostname
         host = socket.gethostname()
       if port is None:
-        port = 5000  # initiate port no above 1024
+        port = 8080  # initiate port no above 1024
 
       self.socket = socket.socket()
       self.ThreadCount = 0
