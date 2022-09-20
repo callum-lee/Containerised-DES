@@ -1,6 +1,6 @@
 # Containerised-DES
 The purpose of this project is to be able to containerise discrete event simulation models to make them more portable and efficient. There are several key parts in this project: 
-- The models folder contains the simple queueing models that we are testing on 
+- The models folder contains the simple queueing models that we are testing on
 - The jaamsim folder contains the original jaamsim code that has been customised to control events and have them passed externally
 - The socketapp contains the external message handler alongside the dockerfiles that handle the execution and containerisation of both components
 
