@@ -10,10 +10,9 @@ The purpose of this project is to be able to containerise discrete event simulat
 
 
 ## Containerisation
-The servers and clients have it's respective docker files and an overarching docker compose file. To start these containers, you will need to build and then run these files. 
+The servers and clients have it's respective docker files and an overarching docker compose file. To start these containers, you will need to build and then run these files. Open an integrate terminal into the socketapp path then run the following commands.
 
 ### Build
-
 ```
 $ docker-compose build
 ```
