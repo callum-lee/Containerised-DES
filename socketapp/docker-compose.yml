@@ -18,3 +18,11 @@ services:
     network_mode: host
     depends_on:
       - server 
+    deploy:
+      mode: replicated
+      replicas: 2
+
+
+  server that is a public ip configs:
+  
+
