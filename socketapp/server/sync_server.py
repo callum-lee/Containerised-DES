@@ -31,7 +31,7 @@ class SyncServer:
           
           if (connection == curr) or (prev != curr):
             # Only send a message if the current executing connection has changed
-            response = 'Server message: Connection = ' + str(curr.getpeername()) + ' at ' + str(self.ConnectionDict[curr])
+            response = 'Server message: Connection = ' + str(curr.getpeername()) + ' at ' + str(self.ConnectionDict[curr]) + os.linesep
             print(response)
             curr.sendall(str.encode(response))          
           

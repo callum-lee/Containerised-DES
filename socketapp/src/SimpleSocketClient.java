@@ -28,7 +28,9 @@ public class SimpleSocketClient
 
             // Writer to send message to server
             Writer out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream(), "UTF8"));
-           
+            
+            InputStreamReader streamReader = new InputStreamReader(socket.getInputStream(), "UTF-8");
+            BufferedReader reader = new BufferedReader(streamReader);
             
            while(true) {
         	   BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -44,19 +46,21 @@ public class SimpleSocketClient
 	   	       out.flush();
 	   	       
             boolean acknowledged = false;
-            
+
 			while (!acknowledged) {
 	            // StreamReader to read the response from the server
-	            InputStreamReader streamReader = new InputStreamReader(socket.getInputStream(), "UTF-8");
-	            // BufferedReader reader = new BufferedReader(streamReader);
+
 	            
 //				String responseMsg;
 				StringBuilder sb = new StringBuilder();
+				
+				String responseMessage = reader.readLine();
+				System.out.println(responseMessage);
 
-				for (int ch; (ch = streamReader.read()) != -1; ) {
-				    sb.append((char) ch);
-				}
-				System.out.println(sb.toString());
+//				for (int ch; (ch = streamReader.read()) != -1; ) { // this gets stuck
+//				    sb.append((char) ch);
+//				}
+//				System.out.println(sb.toString());
 	        	acknowledged = true;
 
     	    }
