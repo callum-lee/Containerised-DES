@@ -38,7 +38,7 @@ public class SimpleSocketClient
 	   	       System.out.println("Hey there: ");
 	   	       dataStr = br.readLine();
 	   	       
-	   	       if (dataStr == "Bye"){
+	   	       if (dataStr.equals("Bye")){
 	  	         break;
 	   	       }
         	        	

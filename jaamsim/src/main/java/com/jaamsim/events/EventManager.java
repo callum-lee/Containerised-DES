@@ -17,13 +17,21 @@
  */
 package com.jaamsim.events;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.Console;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicLong;
 
 // CDES change: Need EntityTarget info
 import com.jaamsim.basicsim.EntityTarget;
+import java.net.Socket;
+import java.net.UnknownHostException;
+import java.net.InetAddress;
 
 /**
  * The EventManager is responsible for scheduling future events, controlling
@@ -77,6 +85,13 @@ public final class EventManager {
 	private EventTimeListener timelistener;
 	private EventTraceListener trcListener;
 
+	// CDES Change: Output the event description and the tick time that it will be executed at
+	private Socket socket;
+    private Writer sender;
+    
+    private InputStreamReader streamReader;
+    private BufferedReader receiver;
+	
 	/**
 	 * Allocates a new EventManager with the given parent and name
 	 *
@@ -106,6 +121,28 @@ public final class EventManager {
 		realTimeFactor = 1;
 		rebaseRealTime = true;
 		setTimeListener(null);
+
+		// CDES Change: Output the event description and the tick time that it will be executed at
+        try {
+	        String server = InetAddress.getLocalHost().getHostName();
+	        int port = 8080;
+	
+	        System.out.println( "Loading contents of URL: " + server );
+
+            // Connect to the server
+            socket = new Socket( server, port );
+
+            // Writer to send messages to server
+            sender = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream(), "UTF8"));
+            
+            // Reader to receive messages from server
+            streamReader = new InputStreamReader(socket.getInputStream(), "UTF-8");
+            receiver = new BufferedReader(streamReader);
+        
+        } catch( Exception e ) {
+        	e.printStackTrace();
+        }
+
 	}
 
 	public final void setTimeListener(EventTimeListener l) {
@@ -167,7 +204,29 @@ public final class EventManager {
 		if (!t.getDescription().endsWith(".startUp")) {
 			System.out.println("Executing " + t.getDescription() +
 					           " at " + curTicks);
+			
+           try {
+        	              
+	        	        	
+        	   sender.append(Long.toString(curTicks)).append("\n");
+        	   sender.flush();
+		   	       
+        	   boolean acknowledged = false;
+
+        	   while (!acknowledged) {					
+        		   String responseMessage = receiver.readLine();
+        		   System.out.println(responseMessage);
+
+        		   acknowledged = true;
+
+        	   }
+        	   
+           } catch( Exception e ) {
+               	e.printStackTrace();
+           }
+			
 		}
+
 		try {
 			// If the event has a captured process, pass control to it
 			Process p = t.getProcess();
