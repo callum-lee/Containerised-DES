@@ -31,5 +31,5 @@ def client_program(message):
     ClientMultiSocket.close()
   
 if __name__ == '__main__':
-    message = ["10","11"]
+    message = ["0","2","4","5","7","Bye"]
     client_program(message)

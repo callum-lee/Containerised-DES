@@ -38,6 +38,7 @@ class SyncServer:
         if not data: break
        
       connection.close()
+      
       if len(self.ConnectionDict.keys()) == 0: self.socket.close()
       
     def run(self, host=None, port=None):

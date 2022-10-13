@@ -18,11 +18,15 @@ services:
     network_mode: host
     depends_on:
       - server 
-    deploy:
-      mode: replicated
-      replicas: 2
+  
+  client_2:
+    build: client_2/
+    command: python ./sync_client_2.py
+    network_mode: host
+    depends_on:
+      - server 
 
 
-  server that is a public ip configs:
+
   
 
