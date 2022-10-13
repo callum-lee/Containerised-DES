@@ -25,4 +25,4 @@ $ docker-compose up
 ## Authors
 - Callum Lee
 - Shannon Lu
-- Michael O'Sullivan
+- Michael O'Sullivan (Supervisor)
